@@ -1,0 +1,80 @@
+package br.embrapa.model;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
+
+
+public class ModLocal3PK implements Serializable{
+
+	
+	private ModLocal2 modLocal2;
+	private Long codigo;
+	
+	
+	public ModLocal3PK() {
+	}
+
+
+	public ModLocal2 getModLocal2() {
+		return modLocal2;
+	}
+
+
+	public void setModLocal2(ModLocal2 modLocal2) {
+		this.modLocal2 = modLocal2;
+	}
+
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((modLocal2 == null) ? 0 : modLocal2.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ModLocal3PK other = (ModLocal3PK) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		if (modLocal2 == null) {
+			if (other.modLocal2 != null)
+				return false;
+		} else if (!modLocal2.equals(other.modLocal2))
+			return false;
+		return true;
+	}
+
+
+	
+	
+	
+}

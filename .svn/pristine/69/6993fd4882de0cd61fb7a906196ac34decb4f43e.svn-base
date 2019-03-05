@@ -1,0 +1,30 @@
+package br.embrapa.repository.projections;
+
+public class ResumoCadAmostragem {
+	
+	private Long codigo;
+	private String nmamostragem;
+		
+	public ResumoCadAmostragem(Long codigo, String nmamostragem) {
+		this.codigo = codigo;
+		this.nmamostragem = nmamostragem;
+	}
+	
+	public Long getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+	public String getNmamostragem() {
+		return nmamostragem;
+	}
+	public void setNmamostragem(String nmamostragem) {
+		this.nmamostragem = nmamostragem;
+	}
+	
+	
+	
+	
+
+}

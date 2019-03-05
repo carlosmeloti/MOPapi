@@ -1,0 +1,82 @@
+package br.embrapa.model;
+
+import java.io.Serializable;
+
+public class ModLocal2PK implements Serializable{
+	
+
+	private ModLocal1 cdLocal1;
+	private ModLocal1 cdEmpresa;
+	private Long codigo;
+
+	public ModLocal2PK() {
+		
+	}
+
+	public ModLocal1 getCdLocal1() {
+		return cdLocal1;
+	}
+
+	public void setCdLocal1(ModLocal1 cdLocal1) {
+		this.cdLocal1 = cdLocal1;
+	}
+
+	public ModLocal1 getCdEmpresa() {
+		return cdEmpresa;
+	}
+
+	public void setCdEmpresa(ModLocal1 cdEmpresa) {
+		this.cdEmpresa = cdEmpresa;
+	}
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cdEmpresa == null) ? 0 : cdEmpresa.hashCode());
+		result = prime * result + ((cdLocal1 == null) ? 0 : cdLocal1.hashCode());
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ModLocal2PK other = (ModLocal2PK) obj;
+		if (cdEmpresa == null) {
+			if (other.cdEmpresa != null)
+				return false;
+		} else if (!cdEmpresa.equals(other.cdEmpresa))
+			return false;
+		if (cdLocal1 == null) {
+			if (other.cdLocal1 != null)
+				return false;
+		} else if (!cdLocal1.equals(other.cdLocal1))
+			return false;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
+	}
+	
+	
+
+
+	
+
+}

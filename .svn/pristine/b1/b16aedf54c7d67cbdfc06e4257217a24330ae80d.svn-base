@@ -1,0 +1,16 @@
+package br.embrapa.repository.filter;
+
+public class ModLocal2Filter {
+	
+		private String nmlocal2;
+
+		public String getNmlocal2() {
+			return nmlocal2;
+		}
+
+		public void setNmlocal2(String nmlocal2) {
+			this.nmlocal2 = nmlocal2;
+		}
+		
+		
+}

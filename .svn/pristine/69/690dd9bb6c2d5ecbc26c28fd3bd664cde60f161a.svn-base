@@ -1,0 +1,91 @@
+package br.embrapa.repository.consultas;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
+import org.springframework.util.StringUtils;
+
+import br.embrapa.model.CadAmostragem_;
+import br.embrapa.model.CadEmpresa_;
+import br.embrapa.model.CadFrequencia_;
+import br.embrapa.model.CadNivelDeAvaliacao_;
+import br.embrapa.model.CadTipoDeMetodo_;
+import br.embrapa.model.CadTipoDeVerificador_;
+import br.embrapa.model.ModLocal1_;
+import br.embrapa.model.ModLocal2_;
+import br.embrapa.model.ModLocal3_;
+import br.embrapa.model.ModVerificadorLocal;
+import br.embrapa.model.ModVerificadorLocal_;
+import br.embrapa.model.Verificador_m;
+import br.embrapa.model.Verificador_m_;
+import br.embrapa.repository.filter.ModVerificadorLocalFilter;
+import br.embrapa.repository.projections.ResumoModVerificadorLocal;
+import br.embrapa.repository.projections.ResumoVerificador_m;
+
+
+
+public class ModVerificadorLocalRepositoryImpl implements ModVerificadorLocalRepositoryQuery{
+
+	@PersistenceContext
+	private EntityManager manager;
+	
+	@Override
+	public List<ModVerificadorLocal> filtrar(ModVerificadorLocalFilter modVerificadorLocalFilter) {
+		CriteriaBuilder builder = manager.getCriteriaBuilder();
+		CriteriaQuery<ModVerificadorLocal> criteria = builder .createQuery(ModVerificadorLocal.class);
+		Root<ModVerificadorLocal> root = criteria.from(ModVerificadorLocal.class);
+		
+		Predicate[] predicates = criarRestricoes(modVerificadorLocalFilter, builder, root);
+		criteria.where(predicates);
+		
+		TypedQuery<ModVerificadorLocal> query = manager.createQuery(criteria);
+		return query.getResultList();
+	}
+
+
+	@Override
+	public List<ResumoModVerificadorLocal> resumir(ModVerificadorLocalFilter modVerificadorLocalFilter) {
+		CriteriaBuilder builder = manager .getCriteriaBuilder();
+		CriteriaQuery<ResumoModVerificadorLocal> criteria = builder.createQuery(ResumoModVerificadorLocal.class);
+		Root<ModVerificadorLocal> root = criteria.from(ModVerificadorLocal.class);
+		
+		criteria.select(builder.construct(ResumoModVerificadorLocal.class 
+				, root.get(ModVerificadorLocal_.verificador_m).get(Verificador_m_.nmverificador)
+				, root.get(ModVerificadorLocal_.modlocal1).get(ModLocal3_.modLocal2).get(ModLocal2_.cdLocal1).get(ModLocal1_.nmlocal1)
+				, root.get(ModVerificadorLocal_.modlocal2).get(ModLocal3_.modLocal2).get(ModLocal2_.nmlocal2)
+				, root.get(ModVerificadorLocal_.modlocal3).get(ModLocal3_.nmlocal3)
+				, root.get(ModVerificadorLocal_.txmetodologia)
+				, root.get(ModVerificadorLocal_.cadTipometodo).get(CadTipoDeMetodo_.tipometodo)
+				, root.get(ModVerificadorLocal_.cadFrequencia).get(CadFrequencia_.nmFrequencia)
+				, root.get(ModVerificadorLocal_.cadAmostragem).get(CadAmostragem_.nmamostragem)));
+		
+		
+		Predicate[] predicates = criarRestricoes(modVerificadorLocalFilter, builder, root);
+		criteria.where(predicates);
+		
+		TypedQuery<ResumoModVerificadorLocal> query = manager.createQuery(criteria);
+		return query.getResultList();
+		
+	}
+
+	private Predicate[] criarRestricoes(ModVerificadorLocalFilter modVerificadorLocalFilter, CriteriaBuilder builder,
+			Root<ModVerificadorLocal> root) {
+		List<Predicate> predicates = new ArrayList<>();
+		if(!StringUtils.isEmpty(modVerificadorLocalFilter.getNmverificador())) {
+			predicates.add(builder.like(
+					builder.lower(root.get(ModVerificadorLocal_.verificador_m).get(Verificador_m_.nmverificador)), "%" + modVerificadorLocalFilter.getNmverificador().toLowerCase() + "%"));
+		}
+		
+		return predicates.toArray(new Predicate[predicates.size()]);
+	}
+	
+	
+}

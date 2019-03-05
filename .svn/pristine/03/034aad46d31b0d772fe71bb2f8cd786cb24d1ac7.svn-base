@@ -1,0 +1,12 @@
+package br.embrapa.repository.consultas;
+
+import java.util.List;
+
+import br.embrapa.model.CadNivelDeAvaliacao;
+import br.embrapa.repository.filter.CadNivelDeAvaliacaoFilter;
+
+public interface CadNivelDeAvaliacaoRepositoryQuery {
+
+	public List<CadNivelDeAvaliacao> filtrar(CadNivelDeAvaliacaoFilter cadNivelDeAvaliacaoFilter);
+	
+}

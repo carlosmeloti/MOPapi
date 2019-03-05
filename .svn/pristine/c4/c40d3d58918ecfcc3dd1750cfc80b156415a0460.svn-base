@@ -1,0 +1,11 @@
+package br.embrapa.model;
+
+public class ModVerificadorLocalPK {
+	
+	r15_cdempresa,r15_cdverificador,r15_cdtipoverificador,r15_cdlocal1,r15_cdlocal2,r15_cdlocal3
+	
+	private ModLocal3 cdEmpresa;
+	private ModLocal3 cdEmpresa;
+	
+
+}

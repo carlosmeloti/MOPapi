@@ -1,0 +1,28 @@
+package br.embrapa.repository.projections;
+
+public class ResumoCadMaterial {
+
+	private Long codigo;
+	private String nmmaterial;
+		
+	public ResumoCadMaterial(Long codigo, String nmmaterial) {
+		this.codigo = codigo;
+		this.nmmaterial = nmmaterial;
+	}
+	
+	public Long getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+	public String getNmmaterial() {
+		return nmmaterial;
+	}
+	public void setNmmaterial(String nmmaterial) {
+		this.nmmaterial = nmmaterial;
+	}
+	
+	
+	
+}

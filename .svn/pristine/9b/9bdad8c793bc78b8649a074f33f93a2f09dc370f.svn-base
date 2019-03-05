@@ -1,0 +1,13 @@
+package br.embrapa.repository.consultas;
+
+import java.util.List;
+
+import br.embrapa.model.CadEmpresa;
+import br.embrapa.repository.filter.CadEmpresaFilter;
+
+public interface CadEmpresaRepositoryQuery {
+
+	public List<CadEmpresa> filtrar(CadEmpresaFilter cadEmpresFilter);
+	
+	
+}

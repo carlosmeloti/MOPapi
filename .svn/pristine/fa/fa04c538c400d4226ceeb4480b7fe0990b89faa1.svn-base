@@ -1,0 +1,162 @@
+	package br.embrapa.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="r15_verificador_local_m")
+public class ModVerificadorLocal {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	private long id;
+	
+	@ManyToOne
+	@JoinColumn(name="r15_cdempresa")
+	private ModLocal3 cadEmpresa;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="r15_cdverificador")
+	private Verificador_m verificador_m;
+	
+	@ManyToOne
+	@JoinColumn(name="r15_cdtipoverificador")
+	private CadTipoDeVerificador cadTipoDeVerificador;
+	
+	@ManyToOne
+	@JoinColumn(name="r15_cdlocal1")
+	private ModLocal3 modlocal1;
+	
+	@ManyToOne
+	@JoinColumn(name="r15_cdlocal2")
+	private ModLocal3 modlocal2;
+	
+	@ManyToOne
+	@JoinColumn(name="r15_cdlocal3")
+	private ModLocal3 modlocal3;
+	
+	@ManyToOne
+	@JoinColumn(name="r15_cdtipometodo")
+	private CadTipoDeMetodo cadTipometodo;
+	
+	@Column(name="r15_txmetodologia")
+	private String txmetodologia;
+	
+	@ManyToOne
+	@JoinColumn(name="r15_cdfrequencia")
+	private CadFrequencia cadFrequencia;
+	
+	@ManyToOne
+	@JoinColumn(name="r15_cdamostragem")
+	private CadAmostragem cadAmostragem;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	
+
+	public ModLocal3 getCadEmpresa() {
+		return cadEmpresa;
+	}
+
+	public void setCadEmpresa(ModLocal3 cadEmpresa) {
+		this.cadEmpresa = cadEmpresa;
+	}
+
+	public Verificador_m getVerificador_m() {
+		return verificador_m;
+	}
+
+	public void setVerificador_m(Verificador_m verificador_m) {
+		this.verificador_m = verificador_m;
+	}
+
+	public CadTipoDeVerificador getCadTipoDeVerificador() {
+		return cadTipoDeVerificador;
+	}
+
+	public void setCadTipoDeVerificador(CadTipoDeVerificador cadTipoDeVerificador) {
+		this.cadTipoDeVerificador = cadTipoDeVerificador;
+	}
+
+	
+	public ModLocal3 getModlocal3() {
+		return modlocal3;
+	}
+
+	public void setModlocal3(ModLocal3 modlocal3) {
+		this.modlocal3 = modlocal3;
+	}
+
+	public CadTipoDeMetodo getCadTipometodo() {
+		return cadTipometodo;
+	}
+
+	public void setCadTipometodo(CadTipoDeMetodo cadTipometodo) {
+		this.cadTipometodo = cadTipometodo;
+	}
+
+	public String getTxmetodologia() {
+		return txmetodologia;
+	}
+
+	public void setTxmetodologia(String txmetodologia) {
+		this.txmetodologia = txmetodologia;
+	}
+
+	public CadFrequencia getCadFrequencia() {
+		return cadFrequencia;
+	}
+
+	public void setCadFrequencia(CadFrequencia cadFrequencia) {
+		this.cadFrequencia = cadFrequencia;
+	}
+
+	public CadAmostragem getCadAmostragem() {
+		return cadAmostragem;
+	}
+
+	public void setCadAmostragem(CadAmostragem cadAmostragem) {
+		this.cadAmostragem = cadAmostragem;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ModVerificadorLocal other = (ModVerificadorLocal) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+	
+		
+
+		
+		
+}

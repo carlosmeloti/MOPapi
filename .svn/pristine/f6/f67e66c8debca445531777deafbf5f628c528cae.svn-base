@@ -1,0 +1,53 @@
+package br.embrapa.model;
+
+import java.io.Serializable;
+
+public class ModLocal2Id implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Long codigo;
+	
+	private Long cdLocal1;
+	
+	private Long cdEmpresa;
+	
+		
+	public ModLocal2Id(Long codigo, Long cdLocal1, Long cdEmpresa) {
+		this.codigo = codigo;
+		this.cdLocal1 = cdLocal1;
+		this.cdEmpresa = cdEmpresa;
+	}
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public Long getCdLocal1() {
+		return cdLocal1;
+	}
+
+	public void setCdLocal1(Long cdLocal1) {
+		this.cdLocal1 = cdLocal1;
+	}
+
+	public Long getCdEmpresa() {
+		return cdEmpresa;
+	}
+
+	public void setCdEmpresa(Long cdEmpresa) {
+		this.cdEmpresa = cdEmpresa;
+	}
+	
+	
+	
+	
+	
+}

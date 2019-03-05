@@ -1,0 +1,17 @@
+package br.embrapa.repository.consultas;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import br.embrapa.model.Verificador_m;
+import br.embrapa.repository.filter.Verificador_mFilter;
+import br.embrapa.repository.projections.ResumoVerificador_m;
+
+
+
+public interface Verificador_mRepositoryQuery {
+	
+	public Page<Verificador_m> filtrar(Verificador_mFilter verificador_mFilter, Pageable pageable);
+	public Page<ResumoVerificador_m> resumir(Verificador_mFilter verificador_mFilter, Pageable pageable);
+
+}

@@ -1,0 +1,21 @@
+package br.embrapa.repository.filter;
+
+public class CadTipoDeVerificadorFilter {
+	
+	private String nmTipoVerificador;
+
+	public String getNmTipoVerificador() {
+		return nmTipoVerificador;
+	}
+
+	public void setNmTipoVerificador(String nmTipoVerificador) {
+		this.nmTipoVerificador = nmTipoVerificador;
+	}
+
+	
+	
+	
+	
+	
+	
+}

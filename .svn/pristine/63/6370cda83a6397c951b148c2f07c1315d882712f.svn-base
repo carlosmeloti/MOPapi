@@ -1,0 +1,33 @@
+package br.embrapa.repository.projections;
+
+public class ResumoCadFrequencia {
+
+	private Long codigo;
+	private String nmFrequencia;
+	
+	public ResumoCadFrequencia(Long codigo, String nmFrequencia) {
+		this.codigo = codigo;
+		this.nmFrequencia = nmFrequencia;
+	}
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getNmFrequencia() {
+		return nmFrequencia;
+	}
+
+	public void setNmFrequencia(String nmFrequencia) {
+		this.nmFrequencia = nmFrequencia;
+	}
+	
+	
+	
+	
+
+}

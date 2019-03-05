@@ -1,0 +1,33 @@
+package br.embrapa.repository.projections;
+
+public class ResumoCadTipoDeMetodo {
+
+	private Long codigo;
+	private String tipometodo;
+	
+	public ResumoCadTipoDeMetodo(Long codigo, String tipometodo) {
+		
+		this.codigo = codigo;
+		this.tipometodo = tipometodo;
+	}
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getTipometodo() {
+		return tipometodo;
+	}
+
+	public void setTipometodo(String tipometodo) {
+		this.tipometodo = tipometodo;
+	}
+	
+	
+	
+	
+}

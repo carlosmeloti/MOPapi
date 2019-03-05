@@ -1,0 +1,10 @@
+package br.embrapa.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.embrapa.model.ModVerificadorLocal;
+import br.embrapa.repository.consultas.ModVerificadorLocalRepositoryQuery;
+
+public interface ModVerificadorLocalRepository extends JpaRepository<ModVerificadorLocal, Long>, ModVerificadorLocalRepositoryQuery {
+
+}

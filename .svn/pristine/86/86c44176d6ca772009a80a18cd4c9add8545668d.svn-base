@@ -1,0 +1,14 @@
+package br.embrapa.repository.consultas;
+
+import java.util.List;
+
+import br.embrapa.model.ModVerificadorLocal;
+import br.embrapa.repository.filter.ModVerificadorLocalFilter;
+import br.embrapa.repository.projections.ResumoModVerificadorLocal;
+
+public interface ModVerificadorLocalRepositoryQuery {
+	
+	public List<ModVerificadorLocal> filtrar(ModVerificadorLocalFilter modVerificadorLocalFilter);
+	public List<ResumoModVerificadorLocal> resumir(ModVerificadorLocalFilter modVerificadorLocalFilter);
+
+}

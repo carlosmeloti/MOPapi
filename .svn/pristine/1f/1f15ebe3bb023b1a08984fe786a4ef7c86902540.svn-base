@@ -1,0 +1,37 @@
+package br.embrapa.resource;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.embrapa.model.ModVerificadorLocal;
+import br.embrapa.model.Verificador_m;
+import br.embrapa.repository.ModVerificadorLocalRepository;
+import br.embrapa.repository.filter.ModVerificadorLocalFilter;
+import br.embrapa.repository.filter.Verificador_mFilter;
+import br.embrapa.repository.projections.ResumoModVerificadorLocal;
+import br.embrapa.repository.projections.ResumoVerificador_m;
+
+@RestController
+@RequestMapping("/modverificadorlocal")
+public class ModVerificadorLocalResource {
+
+	@Autowired
+	private ModVerificadorLocalRepository modVerificadorLocalRepository;
+	
+	
+	@GetMapping
+	public List<ModVerificadorLocal> Pesquisar(ModVerificadorLocalFilter modVerificadorLocalFilter) {
+		return modVerificadorLocalRepository.filtrar(modVerificadorLocalFilter);
+	}
+	
+	@GetMapping(params = "resumo")
+	public List<ResumoModVerificadorLocal> resumir(ModVerificadorLocalFilter modVerificadorLocalFilter) {
+		return modVerificadorLocalRepository.resumir(modVerificadorLocalFilter);
+	}
+	
+}
