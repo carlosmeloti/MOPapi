@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.embrapa.event.RecursoCriadoEvent;
 import br.embrapa.model.ModLocal3;
+import br.embrapa.model.pk.ModLocal3_PK;
 import br.embrapa.repository.ModLocal3Repository;
 import br.embrapa.repository.filter.ModLocal3Filter;
 import br.embrapa.repository.projections.ResumoModLocal3;
@@ -67,19 +68,19 @@ public class ModLocal3Resource {
 	}
 	
 	@GetMapping("/{codigo}")
-	public ModLocal3 buscarPeloCodigo(@PathVariable Long codigo) {
+	public ModLocal3 buscarPeloCodigo(@PathVariable ModLocal3_PK codigo) {
 		return modLocal3Repository.findOne(codigo);
 		
 	}
 	
 	@DeleteMapping("/{codigo}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable Long codigo) {
+	public void remover(@PathVariable ModLocal3_PK codigo) {
 		modLocal3Repository.delete(codigo);
 	}
 	
 	@PutMapping("/{codigo}")
-	public ResponseEntity<ModLocal3> atualizar(@PathVariable Long codigo, @Valid @RequestBody ModLocal3 cadModLocal3) {
+	public ResponseEntity<ModLocal3> atualizar(@PathVariable ModLocal3_PK codigo, @Valid @RequestBody ModLocal3 cadModLocal3) {
 		ModLocal3 modLocal3Salva = modLocal3Service.atualizar(codigo, cadModLocal3);
 		return ResponseEntity.ok(modLocal3Salva);
 }

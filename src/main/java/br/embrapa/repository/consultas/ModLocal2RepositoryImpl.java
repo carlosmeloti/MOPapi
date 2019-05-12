@@ -49,7 +49,7 @@ public class ModLocal2RepositoryImpl {
 		
 		criteria.select(builder.construct(ResumoModLocal2.class
 				, root.get(ModLocal2_.cdLocal2)
-				, root.get(ModLocal2_.cdLocal1).get(ModLocal1_.nmlocal1)
+				, root.get(ModLocal2_.modLocal1).get(ModLocal1_.nmlocal1)
 				, root.get(ModLocal2_.nmLocal2)));
 		
 		
@@ -94,7 +94,7 @@ public class ModLocal2RepositoryImpl {
 
 		if (modLocal2Filter.getCdLocal1() != null) {
 			predicates.add(
-					builder.equal(root.get(ModLocal2_.cdLocal1).get(ModLocal1_.cdLocal1), modLocal2Filter.getCdLocal1()));
+					builder.equal(root.get(ModLocal2_.modLocal1).get(ModLocal1_.cdLocal1), modLocal2Filter.getCdLocal1()));
 }
 
 		

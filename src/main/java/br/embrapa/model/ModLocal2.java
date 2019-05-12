@@ -2,29 +2,33 @@ package br.embrapa.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.embrapa.model.pk.ModLocal2_PK;
+
 @Entity
 @Table(name="d04_local2_m")
+@IdClass(ModLocal2_PK.class)
 public class ModLocal2 {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="d04_cdlocal2")
 	private Long cdLocal2;
 	
+	@Id
 	@ManyToOne
-	@JoinColumn(name="d04_cdlocal1")
-	private ModLocal1 cdLocal1;
-	
-	@ManyToOne
-	@JoinColumn(name="d04_cdempresa")
-	private CadEmpresa cdEmpresa;
+	@JoinColumns({
+		@JoinColumn(name="d04_cdempresa", referencedColumnName="d03_cdempresa", foreignKey = @ForeignKey(name="local2_fk ")),
+		@JoinColumn(name="d04_cdlocal1", referencedColumnName="d03_cdlocal1", foreignKey = @ForeignKey(name="local2_fk")
+	)
+	})
+	private ModLocal1 modLocal1;
 	
 	@Column(name="d04_nmlocal2")
 	private String nmLocal2;
@@ -37,22 +41,15 @@ public class ModLocal2 {
 		this.cdLocal2 = cdLocal2;
 	}
 
-	public ModLocal1 getCdLocal1() {
-		return cdLocal1;
+	public ModLocal1 getModLocal1() {
+		return modLocal1;
 	}
 
-	public void setCdLocal1(ModLocal1 cdLocal1) {
-		this.cdLocal1 = cdLocal1;
+	public void setModLocal1(ModLocal1 modLocal1) {
+		this.modLocal1 = modLocal1;
 	}
-
 	
-	public CadEmpresa getCdEmpresa() {
-		return cdEmpresa;
-	}
-
-	public void setCdEmpresa(CadEmpresa cdEmpresa) {
-		this.cdEmpresa = cdEmpresa;
-	}
+	
 
 	public String getNmLocal2() {
 		return nmLocal2;
@@ -67,6 +64,7 @@ public class ModLocal2 {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cdLocal2 == null) ? 0 : cdLocal2.hashCode());
+		result = prime * result + ((modLocal1 == null) ? 0 : modLocal1.hashCode());
 		return result;
 	}
 
@@ -84,8 +82,18 @@ public class ModLocal2 {
 				return false;
 		} else if (!cdLocal2.equals(other.cdLocal2))
 			return false;
+		if (modLocal1 == null) {
+			if (other.modLocal1 != null)
+				return false;
+		} else if (!modLocal1.equals(other.modLocal1))
+			return false;
 		return true;
 	}
+	
+	
+	
+	
+	
 	
 	
 	

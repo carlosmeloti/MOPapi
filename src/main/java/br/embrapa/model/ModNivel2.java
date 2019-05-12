@@ -30,7 +30,7 @@ public class ModNivel2 {
 	private String nmNivel2;
 
 	public Long getCdNivel2() {
-		return cdNivel2;
+		return cdNivel2; 
 	}
 
 	public void setCdNivel2(Long cdNivel2) {

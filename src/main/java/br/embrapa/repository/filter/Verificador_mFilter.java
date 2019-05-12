@@ -5,8 +5,16 @@ public class Verificador_mFilter {
 	private String nmTipoDeVerificador;
 	private Long cdVerificador;
 	private Long cdTipoDeVerificador;
+	private Long Id;
 	
 	
+	
+	public Long getId() {
+		return Id;
+	}
+	public void setId(Long id) {
+		Id = id;
+	}
 	public String getNmTipoDeVerificador() {
 		return nmTipoDeVerificador;
 	}

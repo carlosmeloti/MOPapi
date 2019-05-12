@@ -79,6 +79,10 @@ public class Verificador_mRepositoryImpl implements Verificador_mRepositoryQuery
 			predicates.add(
 					builder.equal(root.get(Verificador_m_.cdTipoDeVerificador), verificador_mFilter.getCdTipoDeVerificador()));
 }
+		if (verificador_mFilter.getCdTipoDeVerificador() != null) {
+			predicates.add(
+					builder.equal(root.get(Verificador_m_.cdVerificador), verificador_mFilter.getCdVerificador()));
+}
 		
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}

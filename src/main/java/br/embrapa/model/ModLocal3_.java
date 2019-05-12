@@ -8,11 +8,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(ModLocal3.class)
 public abstract class ModLocal3_ {
 
-	public static volatile SingularAttribute<ModLocal3, CadEmpresa> cdEmpresa;
 	public static volatile SingularAttribute<ModLocal3, String> nmLocal3;
-	public static volatile SingularAttribute<ModLocal3, ModLocal2> cdLocal2;
+	public static volatile SingularAttribute<ModLocal3, ModLocal2> modLocal2;
 	public static volatile SingularAttribute<ModLocal3, Long> cdLocal3;
-	public static volatile SingularAttribute<ModLocal3, ModLocal1> cdLocal1;
 
 }
 

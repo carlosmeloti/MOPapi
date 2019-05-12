@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.embrapa.model.Verificador_m;
+import br.embrapa.model.pk.Verificador_m_PK;
 import br.embrapa.repository.Verificador_mRepository;
 import br.embrapa.repository.filter.Verificador_mFilter;
 import br.embrapa.repository.projections.ResumoVerificador_m;
@@ -46,7 +47,7 @@ public class Verificador_mResource {
 	
 	@GetMapping("/{codigo}")
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_VERIFICADOR_M') and #oauth2.hasScope('read')")
-	public ResponseEntity <Verificador_m>buscarPeloCodigo(@PathVariable Long codigo) {
+	public ResponseEntity <Verificador_m>buscarPeloCodigo(@PathVariable Verificador_m_PK codigo) {
 		Verificador_m verificador_m = verificador_mRepository.findOne(codigo);
 		return verificador_m != null ? ResponseEntity.ok(verificador_m) : ResponseEntity.notFound().build();
 		
@@ -56,7 +57,7 @@ public class Verificador_mResource {
 	
 	@PutMapping("/{codigo}")
 	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_VERIFICADOR_M') and #oauth2.hasScope('write')")
-	public ResponseEntity<Verificador_m> atualizar(@PathVariable Long codigo, @Valid @RequestBody Verificador_m verificador_m) {
+	public ResponseEntity<Verificador_m> atualizar(@PathVariable Verificador_m_PK codigo, @Valid @RequestBody Verificador_m verificador_m) {
 		Verificador_m verificador_mSalva = verificador_mService.atualizar(codigo, verificador_m);
 		return ResponseEntity.ok(verificador_mSalva);
 	}

@@ -2,31 +2,31 @@ package br.embrapa.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.embrapa.model.pk.Verificador_m_PK;
+
 @Entity
 @Table(name="p01_verificador_m")
+@IdClass(Verificador_m_PK.class)
 public class Verificador_m {
 
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="p01_id_Verificador_m")
-	private Long Id_Verificador_m;
-	
 	@ManyToOne
 	@JoinColumn(name="p01_cdempresa")
 	private CadEmpresa cdEmpresa;
 
+	@Id
 	@ManyToOne
 	@JoinColumn(name="p01_cdtipoverificador")
 	private CadTipoDeVerificador cdTipoDeVerificador;
 
+	@Id
 	@Column(name="p01_cdverificador")
 	private Long cdVerificador;
 	
@@ -87,13 +87,6 @@ public class Verificador_m {
 		this.p01_graco = p01_graco;
 	}
 
-	public Long getId_Verificador_m() {
-		return Id_Verificador_m;
-	}
-
-	public void setId_Verificador_m(Long id_Verificador_m) {
-		Id_Verificador_m = id_Verificador_m;
-	}
 
 	public CadEmpresa getCdEmpresa() {
 		return cdEmpresa;
@@ -119,30 +112,7 @@ public class Verificador_m {
 		this.cdVerificador = cdVerificador;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((Id_Verificador_m == null) ? 0 : Id_Verificador_m.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Verificador_m other = (Verificador_m) obj;
-		if (Id_Verificador_m == null) {
-			if (other.Id_Verificador_m != null)
-				return false;
-		} else if (!Id_Verificador_m.equals(other.Id_Verificador_m))
-			return false;
-		return true;
-	}
+	
 
 	
 	

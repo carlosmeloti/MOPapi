@@ -2,84 +2,82 @@ package br.embrapa.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.embrapa.model.pk.ModLocal3_PK;
+
 @Entity
 @Table(name="d05_local3_m")
+@IdClass(ModLocal3_PK.class)
 public class ModLocal3 {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="d05_cdlocal3")
 	private Long cdLocal3;
-	
+		
+	@Id
 	@ManyToOne
-	@JoinColumn(name="d05_cdempresa")
-	private CadEmpresa cdEmpresa;
+	@JoinColumns({
+		@JoinColumn(name="d05_cdempresa", referencedColumnName="d04_cdempresa", foreignKey = @ForeignKey(name="local3_empresa_fk")),
+		@JoinColumn(name="d05_cdlocal1", referencedColumnName="d04_cdlocal1",  foreignKey = @ForeignKey(name="local3_empresa_fk")),
+		@JoinColumn(name="d05_cdlocal2", referencedColumnName="d04_cdlocal2",  foreignKey = @ForeignKey(name="local3_empresa_fk"))
+	})
+	private ModLocal2 modLocal2;
 	
-	@ManyToOne
-	@JoinColumn(name="d05_cdlocal1")
-	private ModLocal1 cdLocal1;
-	
-	@ManyToOne
-	@JoinColumn(name="d05_cdlocal2")
-	private ModLocal2 cdLocal2;
-			
+		
 	@Column(name="d05_nmlocal3")
 	private String nmLocal3;
+
 
 	public Long getCdLocal3() {
 		return cdLocal3;
 	}
 
+
 	public void setCdLocal3(Long cdLocal3) {
 		this.cdLocal3 = cdLocal3;
 	}
 
-	public CadEmpresa getCdEmpresa() {
-		return cdEmpresa;
+
+	public ModLocal2 getModLocal2() {
+		return modLocal2;
 	}
 
-	public void setCdEmpresa(CadEmpresa cdEmpresa) {
-		this.cdEmpresa = cdEmpresa;
+
+	public void setModLocal2(ModLocal2 modLocal2) {
+		this.modLocal2 = modLocal2;
 	}
 
-	public ModLocal1 getCdLocal1() {
-		return cdLocal1;
-	}
-
-	public void setCdLocal1(ModLocal1 cdLocal1) {
-		this.cdLocal1 = cdLocal1;
-	}
-
-	public ModLocal2 getCdLocal2() {
-		return cdLocal2;
-	}
-
-	public void setCdLocal2(ModLocal2 cdLocal2) {
-		this.cdLocal2 = cdLocal2;
-	}
 
 	public String getNmLocal3() {
 		return nmLocal3;
 	}
 
+
 	public void setNmLocal3(String nmLocal3) {
 		this.nmLocal3 = nmLocal3;
 	}
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cdLocal3 == null) ? 0 : cdLocal3.hashCode());
+		result = prime * result + ((modLocal2 == null) ? 0 : modLocal2.hashCode());
+		result = prime * result + ((nmLocal3 == null) ? 0 : nmLocal3.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -95,9 +93,23 @@ public class ModLocal3 {
 				return false;
 		} else if (!cdLocal3.equals(other.cdLocal3))
 			return false;
+		if (modLocal2 == null) {
+			if (other.modLocal2 != null)
+				return false;
+		} else if (!modLocal2.equals(other.modLocal2))
+			return false;
+		if (nmLocal3 == null) {
+			if (other.nmLocal3 != null)
+				return false;
+		} else if (!nmLocal3.equals(other.nmLocal3))
+			return false;
 		return true;
 	}
 	
 	
 	
+	
+
+	
+
 }

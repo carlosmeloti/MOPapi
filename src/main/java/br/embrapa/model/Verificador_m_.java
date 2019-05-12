@@ -14,7 +14,6 @@ public abstract class Verificador_m_ {
 	public static volatile SingularAttribute<Verificador_m, Double> p01_graco;
 	public static volatile SingularAttribute<Verificador_m, Long> cdVerificador;
 	public static volatile SingularAttribute<Verificador_m, CadNivelDeAvaliacao> cadNivelDeAvaliacao;
-	public static volatile SingularAttribute<Verificador_m, Long> Id_Verificador_m;
 	public static volatile SingularAttribute<Verificador_m, String> limiar;
 	public static volatile SingularAttribute<Verificador_m, String> codalfa;
 

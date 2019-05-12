@@ -48,8 +48,8 @@ public class ModLocal3RepositoryImpl {
 		
 		criteria.select(builder.construct(ResumoModLocal3.class
 				, root.get(ModLocal3_.cdLocal3)
-				, root.get(ModLocal3_.cdLocal2).get(ModLocal2_.nmLocal2)
-				, root.get(ModLocal3_.cdLocal1).get(ModLocal1_.nmlocal1)
+				, root.get(ModLocal3_.modLocal2).get(ModLocal2_.nmLocal2)
+				, root.get(ModLocal3_.modLocal2).get(ModLocal2_.modLocal1).get(ModLocal1_.nmlocal1)
 				, root.get(ModLocal3_.nmLocal3)));
 		
 		
@@ -93,11 +93,11 @@ public class ModLocal3RepositoryImpl {
 
 		if (modLocal3Filter.getCdLocal1() != null) {
 			predicates.add(
-					builder.equal(root.get(ModLocal3_.cdLocal1).get(ModLocal1_.cdLocal1), modLocal3Filter.getCdLocal1()));
+					builder.equal(root.get(ModLocal3_.modLocal2).get(ModLocal2_.modLocal1), modLocal3Filter.getCdLocal1()));
 }
 		if (modLocal3Filter.getCdLocal2() != null) {
 			predicates.add(
-					builder.equal(root.get(ModLocal3_.cdLocal2).get(ModLocal2_.cdLocal2), modLocal3Filter.getCdLocal2()));
+					builder.equal(root.get(ModLocal3_.modLocal2).get(ModLocal2_.cdLocal2), modLocal3Filter.getCdLocal2()));
 }
 		
 		

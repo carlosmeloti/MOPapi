@@ -5,12 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.embrapa.model.pk.ModLocal1_PK;
+
 @Entity
 @Table(name="d03_local1_m")
+@IdClass(ModLocal1_PK.class)
 public class ModLocal1 {
 
 	@Id
@@ -18,8 +22,9 @@ public class ModLocal1 {
 	@Column(name="d03_cdlocal1")
 	private Long cdLocal1;
 	
+	@Id
 	@ManyToOne
-	@JoinColumn(name="d03_cdempresa")
+	@JoinColumn(name="d03_cdempresa",referencedColumnName="d24_cdempresa")
 	private CadEmpresa cdEmpresa;
 	
 	@Column(name="d03_nmlocal1")
