@@ -1,0 +1,88 @@
+package br.embrapa.model.pk;
+
+import java.io.Serializable;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import br.embrapa.model.ModLocal2;
+
+public class ModLocal3_PK implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	
+	private Long cdLocal3;
+	private ModLocal2 cdEmpresa;
+	private ModLocal2 cdLocal1;
+	private ModLocal2 cdLocal2;
+	
+	
+	public ModLocal3_PK() {
+	}
+
+
+	public ModLocal3_PK(Long cdLocal3, ModLocal2 cdEmpresa, ModLocal2 cdLocal1, ModLocal2 cdLocal2) {
+		this.cdLocal3 = cdLocal3;
+		this.cdEmpresa = cdEmpresa;
+		this.cdLocal1 = cdLocal1;
+		this.cdLocal2 = cdLocal2;
+	}
+
+
+	public Long getCdLocal3() {
+		return cdLocal3;
+	}
+
+
+	public void setCdLocal3(Long cdLocal3) {
+		this.cdLocal3 = cdLocal3;
+	}
+
+
+	@ManyToOne
+	@JoinColumn(name="d05_cdempresa", referencedColumnName="d04_cdempresa")
+	public ModLocal2 getCdEmpresa() {
+		return cdEmpresa;
+	}
+
+
+	public void setCdEmpresa(ModLocal2 cdEmpresa) {
+		this.cdEmpresa = cdEmpresa;
+	}
+
+
+	@ManyToOne
+	@JoinColumn(name="d05_cdlocal1", referencedColumnName="d04_cdlocal1")
+	public ModLocal2 getCdLocal1() {
+		return cdLocal1;
+	}
+
+
+	public void setCdLocal1(ModLocal2 cdLocal1) {
+		this.cdLocal1 = cdLocal1;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name="d05_cdlocal2", referencedColumnName="d04_cdlocal2")
+	public ModLocal2 getCdLocal2() {
+		return cdLocal2;
+	}
+
+
+	public void setCdLocal2(ModLocal2 cdLocal2) {
+		this.cdLocal2 = cdLocal2;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
+
+}
